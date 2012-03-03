@@ -33,17 +33,7 @@ def rps_tournament_winner(tournament)
     rps_game_winner [rps_tournament_winner(tournament[0]),
                      rps_tournament_winner(tournament[1])]
   elsif tournament.length == 2
-    #print tournament
     rps_game_winner(tournament.map { |games| rps_game_winner(games.map { |game| rps_game_winner(game) }) })
-  elsif tournament.length > 2
-
-    one = tournament.slice!(0, tournament.length/2)
-    two = tournament.slice!(tournament.length/2, tournament.length/2)
-
-    #print rps_tournament_winner(one)
-    #print rps_tournament_winner(two)
-
-    rps_game_winner [rps_tournament_winner(one), rps_tournament_winner(two)]
   end
 
 end
