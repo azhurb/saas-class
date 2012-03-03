@@ -12,12 +12,9 @@ def combine_anagrams(words)
   result = []
 
   map.each do |key, indexes|
-    result.push(indexes.collect{|x| words[x]})
+    result.push(indexes.collect { |x| words[x] })
   end
 
   result
 
 end
-
-#print combine_anagrams(['Cars', 'for', 'potatoes', 'racs', 'four','scar', 'creams','scream'])
-#print ["a", "a"].index('a')

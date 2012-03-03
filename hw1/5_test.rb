@@ -1,6 +1,6 @@
 require "./5.rb"
 require "rubygems"
-gem     "test-unit"
+gem "test-unit"
 require "test/unit"
 
 class TestAssertion < Test::Unit::TestCase

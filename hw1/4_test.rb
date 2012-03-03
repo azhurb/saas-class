@@ -1,6 +1,6 @@
 require "./4.rb"
 require "rubygems"
-gem     "test-unit"
+gem "test-unit"
 require "test/unit"
 
 class TestAssertion < Test::Unit::TestCase
@@ -9,8 +9,8 @@ class TestAssertion < Test::Unit::TestCase
 
     assert_equal dessert.name, "yammy"
     assert_equal dessert.calories, 200
-    assert       dessert.delicious?
-    assert       !dessert.healthy?
+    assert dessert.delicious?
+    assert !dessert.healthy?
 
     dessert.calories = 100
 
@@ -24,11 +24,11 @@ class TestAssertion < Test::Unit::TestCase
     assert_equal jellybean.calories, 20
     assert_equal jellybean.flavor, "orange"
 
-    assert       jellybean.healthy?
-    assert       jellybean.delicious?
+    assert jellybean.healthy?
+    assert jellybean.delicious?
 
     jellybean.flavor = "black licorice"
 
-    assert       !jellybean.delicious?
+    assert !jellybean.delicious?
   end
 end
