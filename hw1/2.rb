@@ -1,5 +1,7 @@
-class WrongNumberOfPlayersError < StandardError ; end
-class NoSuchStrategyError < StandardError ; end
+class WrongNumberOfPlayersError < StandardError;
+end
+class NoSuchStrategyError < StandardError;
+end
 
 def rps_game_winner(game)
   strategy = ["R", "S", "P"]
@@ -7,26 +9,41 @@ def rps_game_winner(game)
   raise NoSuchStrategyError if game.any? { |s| strategy.index(s[1]) == nil }
 
   wins = {'RS' => 'R', 'PS' => 'S', 'PR' => 'P'}
-  map = game.map {|m| m[1]}.sort.join
+  map = game.map { |m| m[1] }.sort.join
   return game[0] if wins[map] == nil
-  game.delete_if {|x| x[1] != wins[map]}[0]
+  game.delete_if { |x| x[1] != wins[map] }[0]
 end
 
 def rps_tournament_winner(tournament)
-  #rps_game_winner(tournament.map {|games| rps_game_winner(games.map {|game| rps_game_winner(game)})})
+
+  unless tournament[0][0].kind_of?(Array)
+    return rps_game_winner(tournament)
+  end
+
+  if tournament[0].length == 1
+    return rps_game_winner(tournament[0][0])
+  end
 
   if tournament.length == 1
-    tournament.map {|games| rps_game_winner(games.map {|game| rps_game_winner(game)})}.at(0)
+    tournament.map { |games| rps_game_winner(games.map { |game| rps_game_winner(game) }) }.at(0)
+  elsif tournament[0][0][0][0].kind_of?(Array)
+    rps_game_winner [rps_tournament_winner(tournament[0]),
+                     rps_tournament_winner(tournament[1])]
+  elsif tournament[0][0][0][0][0].kind_of?(Array)
+    rps_game_winner [rps_tournament_winner(tournament[0]),
+                     rps_tournament_winner(tournament[1])]
   elsif tournament.length == 2
     #print tournament
-    rps_game_winner(tournament.map {|games| rps_game_winner(games.map {|game| rps_game_winner(game)})})
+    rps_game_winner(tournament.map { |games| rps_game_winner(games.map { |game| rps_game_winner(game) }) })
   elsif tournament.length > 2
 
     one = tournament.slice!(0, tournament.length/2)
     two = tournament.slice!(tournament.length/2, tournament.length/2)
 
-    rps_tournament_winner(one)
-    #rps_tournament_winner(two)
+    #print rps_tournament_winner(one)
+    #print rps_tournament_winner(two)
+
+    rps_game_winner [rps_tournament_winner(one), rps_tournament_winner(two)]
   end
 
 end
