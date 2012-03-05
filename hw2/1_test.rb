@@ -47,6 +47,6 @@ class TestAssertion < Test::Unit::TestCase
     assert ![:a, :b, :c].palindrome?
     assert !{"hello" => "world"}.palindrome?
     assert !(1..2).palindrome?
-    #assert ValidPalindromeTest.new(1,9).palindrome?
+    assert ValidPalindromeTest.new(1,9).palindrome?
   end
 end
