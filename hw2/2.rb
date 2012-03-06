@@ -19,7 +19,7 @@ end
 # [:b, 4]
 # [:b, 5]
 
-c = CartesianProduct.new([:a, :b], [])
-c.each { |elt| puts elt.inspect }
+#c = CartesianProduct.new([:a, :b], [])
+#c.each { |elt| puts elt.inspect }
 # (nothing printed since Cartesian product
 # of anything with an empty collection is empty)
