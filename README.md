@@ -1,1 +1,2 @@
-# Project for Software Engineering for Software as a Service class
+# SAAS Class Homework
+Software Engineering for Software as a Service class
